@@ -1,0 +1,33 @@
+/* Write your CSS here */
+* {
+  font-family: 'Roboto';
+}
+.cart-summary-container {
+  display: flex;
+  flex-direction: column;
+}
+.order-total {
+  color: #616e7c;
+  font-size: 18px;
+}
+.total-amount {
+  color: #171f46;
+  font-size: 20px;
+}
+.cart-count {
+  color: #616e7c;
+  margin-top: 1px;
+}
+.checkout-btn {
+  color: #ffffff;
+  background-color: #0b69ff;
+  border-width: 0px;
+  text-align: center;
+  padding: 10px;
+  width: 240px;
+}
+@media (max-width: 767px) and (orientation: portrait) {
+  .checkout-btn {
+    align-self: stretch;
+  }
+}
