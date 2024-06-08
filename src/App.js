@@ -53,7 +53,7 @@ class App extends Component {
           if (product.quantity > 1) {
             return {...product, quantity: product.quantity - 1}
           }
-          // return cartList.splice(indexOfProductItem, 1)
+          return this.removeCartItem(id)
         }
         return product
       }),
@@ -63,25 +63,28 @@ class App extends Component {
   addCartItem = product => {
     //   TODO: Update the code here to implement addCartItem
     const {cartList} = this.state
-    const checkProduct = cartList.map(pro => {
+    const cartProduct = cartList.find(pro => {
       if (pro.id === product.id) {
-        console.log(pro)
         return true
       }
       return false
     })
-    console.log(checkProduct[0])
-    if (checkProduct[0]) {
-      this.setState(prevState => ({
-        cartList: prevState.cartList.map(pro => {
-          if (pro.id === product.id) {
-            return {quantity: product.quantity + 1}
-          }
-          return pro
-        }),
-      }))
+    console.log(cartProduct)
+    if (cartList.includes(cartProduct)) {
+      this.incrementCartItemQuantity(product.id)
+    } else {
+      this.setState(prevState => ({cartList: [...prevState.cartList, product]}))
     }
-    this.setState(prevState => ({cartList: [...prevState.cartList, product]}))
+  }
+
+  removeCartItem = id => {
+    // console.log(id)
+    const {cartList} = this.state
+    const filteredCartList = cartList.filter(product => product.id !== id)
+    // console.log(filteredCartList)
+    this.setState({
+      cartList: filteredCartList,
+    })
   }
 
   render() {
