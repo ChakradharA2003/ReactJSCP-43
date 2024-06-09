@@ -9,7 +9,6 @@ const CartItem = props => (
   <CartContext.Consumer>
     {value => {
       const {
-        cartList,
         removeCartItem,
         incrementCartItemQuantity,
         decrementCartItemQuantity,
@@ -26,7 +25,7 @@ const CartItem = props => (
       const onDecrementCartItemQuantity = () => {
         decrementCartItemQuantity(id)
       }
-      console.log(cartList)
+      // console.log(cartList)
       return (
         <li className="cart-item">
           <img className="cart-product-image" src={imageUrl} alt={title} />
@@ -59,6 +58,7 @@ const CartItem = props => (
             <div className="total-price-remove-container">
               <p className="cart-total-price">Rs {price * quantity}/-</p>
               <button
+                data-testid="remove"
                 className="remove-button"
                 type="button"
                 onClick={onRemoveCartItem}
@@ -69,6 +69,7 @@ const CartItem = props => (
           </div>
           {/* eslint-disable-next-line */}
           <button
+            data-testid="remove"
             className="delete-button"
             type="button"
             onClick={onRemoveCartItem}
