@@ -26,7 +26,7 @@ class App extends Component {
         if (id === product.id) {
           return {...product, quantity: product.quantity + 1}
         }
-        return null
+        return product
       }),
     }))
   }
